@@ -10,8 +10,9 @@ module.exports = function () {
         version: process.env.CAP_VERSION,
         platform: process.env.CAP_PLATFORM,
         'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-        name: process.env.CAP_NAME,
-        build: process.env.TRAVIS_BUILD_NUMBER
+        name: '#' + process.env.TRAVIS_BUILD_NUMBER + ' on ' + process.env.CAP_BROWSER,
+        build: process.env.TRAVIS_BUILD_NUMBER,
+        idleTimeout: 120
       },
       host: 'localhost',
       port: 4445,
