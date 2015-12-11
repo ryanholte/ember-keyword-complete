@@ -26,7 +26,7 @@ describe('ember-keyword-complete', function () {
   it('completes using a single datasource', function (done) {
     return client
       .click('#link-emoji')
-      .waitForVisible('.emoji', WAIT_BUFFER)
+      .waitForVisible('.emoji')
       .addValue('#complete-textarea', ':smil')
       .getText('.complete-tooltip', function (err, list) {
         assert.equal(list, '');
@@ -65,7 +65,7 @@ describe('ember-keyword-complete', function () {
   it('completes from multiple data sources by using a keyword identifier (@ vs :)', function (done) {
     return client
       .click('#link-emoji-and-users')
-      .waitForVisible('.emoji-and-users', WAIT_BUFFER)
+      .waitForVisible('.emoji-and-users')
       .getValue('#complete-textarea', function (err, value) {
         text = value;
       })
