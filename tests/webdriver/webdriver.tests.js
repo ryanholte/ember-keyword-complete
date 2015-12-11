@@ -86,27 +86,32 @@ describe('ember-keyword-complete', function () {
       })
       .addValue('#complete-textarea', 'Back space')
       .addValue('#complete-textarea', 'Back space')
-      .pause(100)
+      .pause(500)
       .getText('.complete-tooltip li strong', function (err, completions) {
         assert.deepEqual(completions, ['@Jaida62', '@Jalon1']);
       })
+      .pause(500)
       .addValue('#complete-textarea', 'Down arrow')
       .getText('.complete-tooltip .complete-item-active strong', function (err, active) {
         assert.deepEqual(active, '@Jaida62');
       })
+      .pause(500)
       .addValue('#complete-textarea', 'Down arrow')
       .getText('.complete-tooltip .complete-item-active strong', function (err, active) {
         assert.deepEqual(active, '@Jalon1');
       })
+      .pause(500)
       .addValue('#complete-textarea', 'Down arrow')
       .getText('.complete-tooltip .complete-item-active strong', function (err, active) {
         assert.deepEqual(active, '@Jaida62');
       })
+      .pause(500)
       .addValue('#complete-textarea', 'Up arrow')
       .getText('.complete-tooltip .complete-item-active strong', function (err, active) {
         assert.deepEqual(active, '@Jalon1');
       })
       .addValue('#complete-textarea', 'Enter')
+      .pause(500)
       .getText('.complete-tooltip', function (err, list) {
         assert.equal(list, '');
       })
