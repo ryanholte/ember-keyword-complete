@@ -3,7 +3,8 @@ var assert = require('assert'),
 
 var client,
   text,
-  waitForVisible = 1000;
+  waitForVisible = 1000,
+  forcedPause = 1000;
 
 describe('ember-keyword-complete', function () {
   before(function(done){
@@ -70,48 +71,48 @@ describe('ember-keyword-complete', function () {
         text = value;
       })
       .addValue('#complete-textarea', ' @ja')
-      .pause(100)
+      .pause(forcedPause)
       .getText('.complete-tooltip li strong', function (err, completions) {
         assert.deepEqual(completions, ['@Jaida62', '@Jalon1']);
       })
       .addValue('#complete-textarea', 'i')
-      .pause(100)
+      .pause(forcedPause)
       .getText('.complete-tooltip li strong', function (err, completions) {
         assert.deepEqual(completions, '@Jaida62');
       })
       .addValue('#complete-textarea', ' ')
-      .pause(100)
+      .pause(forcedPause)
       .getText('.complete-tooltip', function (err, list) {
         assert.equal(list, '');
       })
       .addValue('#complete-textarea', 'Back space')
       .addValue('#complete-textarea', 'Back space')
-      .pause(500)
+      .pause(forcedPause)
       .getText('.complete-tooltip li strong', function (err, completions) {
         assert.deepEqual(completions, ['@Jaida62', '@Jalon1']);
       })
-      .pause(500)
+      .pause(forcedPause)
       .addValue('#complete-textarea', 'Down arrow')
       .getText('.complete-tooltip .complete-item-active strong', function (err, active) {
         assert.deepEqual(active, '@Jaida62');
       })
-      .pause(500)
+      .pause(forcedPause)
       .addValue('#complete-textarea', 'Down arrow')
       .getText('.complete-tooltip .complete-item-active strong', function (err, active) {
         assert.deepEqual(active, '@Jalon1');
       })
-      .pause(500)
+      .pause(forcedPause)
       .addValue('#complete-textarea', 'Down arrow')
       .getText('.complete-tooltip .complete-item-active strong', function (err, active) {
         assert.deepEqual(active, '@Jaida62');
       })
-      .pause(500)
+      .pause(forcedPause)
       .addValue('#complete-textarea', 'Up arrow')
       .getText('.complete-tooltip .complete-item-active strong', function (err, active) {
         assert.deepEqual(active, '@Jalon1');
       })
       .addValue('#complete-textarea', 'Enter')
-      .pause(500)
+      .pause(forcedPause)
       .getText('.complete-tooltip', function (err, list) {
         assert.equal(list, '');
       })
