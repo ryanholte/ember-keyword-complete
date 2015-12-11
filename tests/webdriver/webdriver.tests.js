@@ -2,7 +2,8 @@ var assert = require('assert'),
   driver = require('./driver');
 
 var client,
-  text;
+  text,
+  waitForVisible = 1000;
 
 describe('ember-keyword-complete', function () {
   before(function(done){
@@ -25,7 +26,7 @@ describe('ember-keyword-complete', function () {
   it('completes using a single datasource', function (done) {
     return client
       .click('#link-emoji')
-      .waitForVisible('.emoji')
+      .waitForVisible('.emoji', waitForVisible)
       .addValue('#complete-textarea', ':smil')
       .getText('.complete-tooltip', function (err, list) {
         assert.equal(list, '');
@@ -64,7 +65,7 @@ describe('ember-keyword-complete', function () {
   it('completes from multiple data sources by using a keyword identifier (@ vs :)', function (done) {
     return client
       .click('#link-emoji-and-users')
-      .waitForVisible('.emoji-and-users')
+      .waitForVisible('.emoji-and-users', waitForVisible)
       .getValue('#complete-textarea', function (err, value) {
         text = value;
       })
